@@ -47,12 +47,12 @@ Este curso abordou os seguintes tópicos:
   * Funções built-in;
   * Arredondar no Python e divisão de float e integer.
 
-*  Organizando ainda melhor o nosso código
+* Organizando ainda melhor o nosso código
   * Importando arquivos dentro de outros;
   * Criando funções para os nossos jogos;
   * Diferenciando um arquivo executado de um importado;
   * Declarando e executando funções;
-   * Importação de módulo.
+  * Importação de módulo.
 
 * Comparando Python com C
   * Python vs C;
