@@ -8,7 +8,7 @@ Na Carreira Desenvolvedor Python Web, você vai começar com os fundamentos de H
 
 ## Lista de cursos
 
-### Python 3 parte 1
+#### Python 3 parte 1
 - [X] Introdução à nova versão da linguagem
 
 ### Python 3 parte 2
