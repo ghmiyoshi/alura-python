@@ -29,17 +29,17 @@ Este curso abordou os seguintes tópicos:
   * O tipo None.
 
 * Encapsulamento
-  * Atributos privados
-  * Encapsulamento de código
-  * Encapsulamento da manipulação dos atributos nos métodos
-  * Coesão do código
+  * Atributos privados;
+  * Encapsulamento de código;
+  * Encapsulamento da manipulação dos atributos nos métodos;
+  * Coesão do código.
 
 * Usando Propriedades
-  * Métodos de leitura dos atributos, os getters
-  * Métodos de modifição dos atributos, os setters
-  * Propriedades
+  * Métodos de leitura dos atributos, os getters;
+  * Métodos de modifição dos atributos, os setters;
+  * Propriedades.
 
 * Métodos privados e estáticos
-  * Métodos privados
-  * Métodos da classe, os métodos estáticos
+  * Métodos privados;
+  * Métodos da classe e métodos estáticos.
 
