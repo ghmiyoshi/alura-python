@@ -29,7 +29,7 @@ Este curso abordou os seguintes tópicos:
   * Listas e tuplas juntas;
   * Set e Dictionary.
 
-*  Implementando o encerramento do jogo
+* Implementando o encerramento do jogo
   * Estipulando tentativas de erros;
   * Calculando o total de caracteres em um loop;
   * Compreensão de lista (List Comprehension).
