@@ -52,7 +52,7 @@ Este curso abordou os seguintes tópicos:
   * Criando funções para os nossos jogos;
   * Diferenciando um arquivo executado de um importado;
   * Declarando e executando funções;
-  * Importação de módulo.
+   * Importação de módulo.
 
 * Comparando Python com C
   * Python vs C;
