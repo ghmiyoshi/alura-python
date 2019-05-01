@@ -3,7 +3,7 @@
 Cursos da [Carreira Desenvolvedor Python Web](https://www.alura.com.br/carreira-desenvolvimento-python-web), disponível na plataforma da Alura.
 
 ### Python 3 parte 1
-- [] Introdução à nova versão da linguagem
+- [X] Introdução à nova versão da linguagem
 
 ### Python 3 parte 2
 - Avançando na linguagem
