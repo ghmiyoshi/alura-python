@@ -15,7 +15,7 @@ Este curso abordou os seguintes tópicos:
   * Tipagem do Python;
   * Padrão Snake_Case.
   
-* Lidando com a entrada do usuário:
+* Lidando com a entrada do usuário
   * Instalando e conhecendo o PyCharm;
   * Comparando variáveis;
   * Função input() e função int();
