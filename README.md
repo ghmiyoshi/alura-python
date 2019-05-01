@@ -11,28 +11,28 @@ Na Carreira Desenvolvedor Python Web, você vai começar com os fundamentos de H
 #### Python 3 parte 1
 - [X] Introdução à nova versão da linguagem
 
-### Python 3 parte 2
+#### Python 3 parte 2
 - [X] Avançando na linguagem
 
-### Python 3 parte 3
+#### Python 3 parte 3
 - [X] Introdução a Orientação a objetos
 
-### Python 3 parte 4
+#### Python 3 parte 4
 - [X] Avançando na orientação a objetos
 
-### Testes automatizados
+#### Testes automatizados
 - [ ] TDD com Python
 
-### HTML5 e CSS3 I
+#### HTML5 e CSS3 I
 - [ ] Suas primeiras páginas da Web
 
-### HTTP
+#### HTTP
 - [ ] Entendendo a web por baixo dos panos
 
-### Flask parte 1
+#### Flask parte 1
 - [ ] Crie uma webapp com Python 3
 
-### Flask parte 2
+#### Flask parte 2
 - [ ] Avançando no desenvolvimento web
 
 
