@@ -39,12 +39,50 @@ def criar():
     categoria = request.form['categoria']
     console = request.form['console']
 
+    arquivo = request.files['arquivo']
+    arquivo.save(f'uploads/{arquivo.filename}')
+
     jogo = Jogo(nome, categoria, console)
 
     jogo_dao.salvar(jogo)
     #lista.append(jogo)
 
     return redirect(url_for('index'))
+
+
+@app.route('/edita/<int:id>')
+def edita(id):
+    if 'usuario_logado' not in session or session['usuario_logado'] is None:
+        return redirect(url_for('login', proxima=url_for('edita')))
+    jogo = jogo_dao.busca_por_id(id)
+    return render_template('edita.html',titulo='Edita jogo', jogo=jogo)
+
+
+@app.route('/atualiza', methods=['POST'])
+def atualiza():
+    id = request.form['id']
+    nome = request.form['nome']
+    categoria = request.form['categoria']
+    console = request.form['console']
+
+    jogo = Jogo(nome, categoria, console, id)
+
+    jogo_dao.salvar(jogo)
+    # lista.append(jogo)
+
+    return redirect(url_for('index'))
+
+
+@app.route('/remove/<int:id>')
+def remove(id):
+    if 'usuario_logado' not in session or session['usuario_logado'] is None:
+        return redirect(url_for('login', proxima=url_for('index')))
+
+    flash("O jogo foi removido com sucesso!")
+    jogo_dao.deletar(id)
+
+    return redirect(url_for('index'))
+
 
 
 @app.route('/login')
