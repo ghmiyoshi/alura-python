@@ -1,7 +1,9 @@
-from flask import Flask, render_template, request, redirect, session, flash, url_for
+from flask import Flask, render_template, request, redirect, session, flash, url_for, send_from_directory
 from flask_mysqldb import MySQL
 from models import Jogo, Usuario
 from dao import JogoDao, UsuarioDao
+import os
+import time
 
 # Cria instância do Flask
 app = Flask(__name__)
@@ -14,6 +16,7 @@ app.config['MYSQL_USER'] = "root"
 app.config['MYSQL_PASSWORD'] = "root"
 app.config['MYSQL_DB'] = "jogoteca"
 app.config['MYSQL_PORT'] = 3306
+app.config['UPLOAD_PATH'] = os.path.dirname(os.path.abspath(__file__)) + '/uploads'
 db = MySQL(app)
 
 jogo_dao = JogoDao(db)
@@ -39,12 +42,14 @@ def criar():
     categoria = request.form['categoria']
     console = request.form['console']
 
-    arquivo = request.files['arquivo']
-    arquivo.save(f'uploads/{arquivo.filename}')
-
     jogo = Jogo(nome, categoria, console)
+    jogo = jogo_dao.salvar(jogo)
 
-    jogo_dao.salvar(jogo)
+    arquivo = request.files['arquivo']
+    upload_path = app.config['UPLOAD_PATH']
+    timestamp = time.time()
+
+    arquivo.save(f'{upload_path}/capa{jogo.id}-{timestamp}.jpg')
     #lista.append(jogo)
 
     return redirect(url_for('index'))
@@ -54,8 +59,12 @@ def criar():
 def edita(id):
     if 'usuario_logado' not in session or session['usuario_logado'] is None:
         return redirect(url_for('login', proxima=url_for('edita')))
+
     jogo = jogo_dao.busca_por_id(id)
-    return render_template('edita.html',titulo='Edita jogo', jogo=jogo)
+
+    nome_imagem = recupera_imagem(id)
+
+    return render_template('edita.html',titulo='Edita jogo', jogo=jogo, capa_jogo=nome_imagem)
 
 
 @app.route('/atualiza', methods=['POST'])
@@ -70,6 +79,15 @@ def atualiza():
     jogo_dao.salvar(jogo)
     # lista.append(jogo)
 
+    arquivo = request.files['arquivo']
+    upload_path = app.config['UPLOAD_PATH']
+
+    timestamp = time.time()
+
+    deleta_imagem(jogo.id)
+
+    arquivo.save(f'{upload_path}/capa{jogo.id}-{timestamp}.jpg')
+
     return redirect(url_for('index'))
 
 
@@ -82,7 +100,6 @@ def remove(id):
     jogo_dao.deletar(id)
 
     return redirect(url_for('index'))
-
 
 
 @app.route('/login')
@@ -110,6 +127,22 @@ def logout():
     session['usuario_logado'] = None
     flash('Nenhum usuário logado!')
     return redirect(url_for('index'))
+
+
+@app.route('/uploads/<nome_arquivo>')
+def imagem(nome_arquivo):
+    return send_from_directory('uploads', nome_arquivo)
+
+
+def recupera_imagem(id):
+    for nome_arquivo in os.listdir(app.config['UPLOAD_PATH']):
+        if f'capa{id}' in nome_arquivo:
+            return nome_arquivo
+
+
+def deleta_imagem(id):
+    imagem = recupera_imagem(id)
+    os.remove(os.path.join(app.config['UPLOAD_PATH'], imagem))
 
 
 app.run(debug=True)

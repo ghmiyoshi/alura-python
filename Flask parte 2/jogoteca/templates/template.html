@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Jogoteca</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='app.css') }}" />
 </head>
 <body>
-
+    <div class="container">
         <!-- Flask: Captura mensagens do flash-->
         {% with messages = get_flashed_messages() %}
             {% if messages %}
@@ -19,11 +20,15 @@
             {% endif %}
         {% endwith %}
 
-    <div class="container">
+
       <div class="page-header">
           <h1>{{ titulo }}</h1>
       </div>
+
         {% block conteudo %}{% endblock %}
+
+    <script type="text/javascript" src="{{ url_for('static', filename='jquery-3.4.1.min.js' ) }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='app.js' ) }}"></script>
     </div>
 </body>
 </html>
